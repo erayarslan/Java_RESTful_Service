@@ -14,10 +14,10 @@ public class Shop {
     @Column(name = "SHOP_ID", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "SHOP_CODE", unique = true, nullable = false)
+    @Column(name = "SHOP_CODE", unique = true, nullable = false, length = 8)
     private String code;
 
-    @Column(name = "SHOP_NAME", nullable = false)
+    @Column(name = "SHOP_NAME", nullable = false, length = 32)
     private String name;
 
     @Column(name = "IS_SYSTEM_ON", columnDefinition = "INT(1)", nullable = false)

@@ -1,10 +1,12 @@
 package com.toyota.tshop.util;
 
+import javax.persistence.NoResultException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
 
+import com.toyota.tshop.dao.TokenDAO;
 import com.toyota.tshop.dto.CustomResponseDTO;
 import org.jboss.resteasy.annotations.interception.ServerInterceptor;
 import org.jboss.resteasy.core.Headers;
@@ -13,6 +15,7 @@ import org.jboss.resteasy.core.ServerResponse;
 import org.jboss.resteasy.spi.Failure;
 import org.jboss.resteasy.spi.HttpRequest;
 import org.jboss.resteasy.spi.interception.PreProcessInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
@@ -21,6 +24,9 @@ import java.util.*;
 @Provider
 @ServerInterceptor
 public class SecurityInterceptor implements PreProcessInterceptor {
+    @Autowired
+    TokenDAO tokenDAO;
+
     private static final ServerResponse ACCESS_DENIED = new ServerResponse(
             new CustomResponseDTO("Access denied for this resource"),
             401,
@@ -44,12 +50,15 @@ public class SecurityInterceptor implements PreProcessInterceptor {
             final HttpHeaders httpHeaders = httpRequest.getHttpHeaders();
             MultivaluedMap<String, String> multivaluedMap = httpHeaders.getRequestHeaders();
             List<String> tokens = multivaluedMap.get("token");
+            String token = tokens.get(0);
 
-            if (StringUtils.isEmpty(tokens)) {
-                return ACCESS_DENIED;
-            } else {
+            try {
+                tokenDAO.existToken(token);
                 return null;
+            } catch (NoResultException ex) {
+                return ACCESS_DENIED;
             }
+
         } else {
             return null;
         }
