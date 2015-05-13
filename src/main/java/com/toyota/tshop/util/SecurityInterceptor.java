@@ -8,6 +8,7 @@ import javax.ws.rs.ext.Provider;
 
 import com.toyota.tshop.dao.TokenDAO;
 import com.toyota.tshop.dto.CustomResponseDTO;
+import com.toyota.tshop.entity.Token;
 import org.jboss.resteasy.annotations.interception.ServerInterceptor;
 import org.jboss.resteasy.core.Headers;
 import org.jboss.resteasy.core.ResourceMethod;
@@ -53,8 +54,12 @@ public class SecurityInterceptor implements PreProcessInterceptor {
             String token = tokens.get(0);
 
             try {
-                tokenDAO.existToken(token);
-                return null;
+                Token tokenObj = tokenDAO.existToken(token);
+                return new ServerResponse(
+                        new CustomResponseDTO(tokenObj.getUser().getUsername()),
+                        200,
+                        new Headers<Object>()
+                );
             } catch (NoResultException ex) {
                 return ACCESS_DENIED;
             }
