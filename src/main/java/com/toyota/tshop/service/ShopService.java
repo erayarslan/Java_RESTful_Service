@@ -38,7 +38,7 @@ public class ShopService {
         Shop shop = shopDAO.findByID(id);
         shop.setName(shopDTO.getName());
         shop.setCode(shopDTO.getCode());
-        shop.setUpdatedBy(shopDTO.getName());
+        shop.setUpdatedBy(shopDTO.getUpdatedBy());
         shop.setUpdatedDate(new Date());
         shopDAO.save(shop);
     }

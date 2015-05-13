@@ -1,6 +1,7 @@
 package com.toyota.tshop.dto;
 
 import com.toyota.tshop.entity.Shop;
+import com.toyota.tshop.entity.User;
 
 import java.util.Date;
 
@@ -11,7 +12,7 @@ public class ShopDTO {
     private String code;
     private String name;
     private boolean isOnline;
-    private String updatedBy;
+    private User updatedBy;
     private Date updatedDate;
 
     public ShopDTO() {
@@ -65,11 +66,11 @@ public class ShopDTO {
         isOnline = online;
     }
 
-    public String getUpdatedBy() {
+    public User getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(User updatedBy) {
         this.updatedBy = updatedBy;
     }
 

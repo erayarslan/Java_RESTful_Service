@@ -5,25 +5,27 @@ import java.util.Date;
 
 @Entity
 @SuppressWarnings("unused")
-@Table(name = "T_SHOP")
+@Table(name = "T_SHOP", catalog = "omg", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "SHOP_CODE")
+})
 public class Shop {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "SHOP_ID")
+    @Column(name = "SHOP_ID", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "SHOP_CODE", length = 10)
+    @Column(name = "SHOP_CODE", unique = true, nullable = false)
     private String code;
 
-    @Column(name = "SHOP_NAME", length = 50)
+    @Column(name = "SHOP_NAME", nullable = false)
     private String name;
 
-    @Column(name = "IS_SYSTEM_ON", columnDefinition = "INT(1)")
+    @Column(name = "IS_SYSTEM_ON", columnDefinition = "INT(1)", nullable = false)
     private boolean isOnline;
 
-    @Column(name = "UPDATED_BY", length = 10)
-    private String updatedBy;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UPDATED_BY", nullable = false)
+    private User updatedBy;
 
     @Column(name = "UPDATED_DATE")
     private Date updatedDate;
@@ -70,11 +72,11 @@ public class Shop {
         isOnline = online;
     }
 
-    public String getUpdatedBy() {
+    public User getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(User updatedBy) {
         this.updatedBy = updatedBy;
     }
 
