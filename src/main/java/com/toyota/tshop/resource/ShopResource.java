@@ -2,6 +2,7 @@ package com.toyota.tshop.resource;
 
 import com.toyota.tshop.dto.CustomResponseDTO;
 import com.toyota.tshop.dto.ShopDTO;
+import com.toyota.tshop.entity.User;
 import com.toyota.tshop.service.ShopService;
 import com.toyota.tshop.util.NeedAuth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class ShopResource {
     @NeedAuth
     @Produces(MediaType.APPLICATION_JSON)
     public Response getShops() {
+        User user = (User)servletRequest.getAttribute("user");
         return Response.ok(shopService.getAll()).build();
     }
 

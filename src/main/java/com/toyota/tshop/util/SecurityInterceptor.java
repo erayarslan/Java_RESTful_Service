@@ -55,11 +55,8 @@ public class SecurityInterceptor implements PreProcessInterceptor {
 
             try {
                 Token tokenObj = tokenDAO.existToken(token);
-                return new ServerResponse(
-                        new CustomResponseDTO(tokenObj.getUser().getUsername()),
-                        200,
-                        new Headers<Object>()
-                );
+                httpRequest.setAttribute("user", tokenObj.getUser());
+                return null;
             } catch (NoResultException ex) {
                 return ACCESS_DENIED;
             }

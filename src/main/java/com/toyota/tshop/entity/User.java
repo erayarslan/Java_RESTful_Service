@@ -21,10 +21,10 @@ public class User {
     @Column(name = "PASSWORD", unique = false, nullable = false, length = 32)
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "updatedBy")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "updatedBy")
     private Set<Shop> userShops = new HashSet<Shop>(0);
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Token> userTokens = new HashSet<Token>(0);
 
     public Set<Token> getUserTokens() {
