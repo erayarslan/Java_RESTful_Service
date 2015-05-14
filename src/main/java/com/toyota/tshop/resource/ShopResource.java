@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 @Path("/shops")
 public class ShopResource {
     @Context
-    private HttpServletRequest servletRequest;
+    private HttpServletRequest httpServletRequest;
 
     @Autowired
     private ShopService shopService;
@@ -27,7 +27,8 @@ public class ShopResource {
     @NeedAuth
     @Produces(MediaType.APPLICATION_JSON)
     public Response getShops() {
-        User user = (User)servletRequest.getAttribute("user");
+        User user = (User)httpServletRequest.getAttribute("user");
+        //
         return Response.ok(shopService.getAll()).build();
     }
 
@@ -36,6 +37,8 @@ public class ShopResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getShopWithID(@PathParam("id") int id) {
+        User user = (User)httpServletRequest.getAttribute("user");
+        //
         return Response.ok(shopService.getByID(id)).build();
     }
 
@@ -44,6 +47,8 @@ public class ShopResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addShop(ShopDTO shopDTO) {
+        User user = (User)httpServletRequest.getAttribute("user");
+        //
         shopService.persistShop(shopDTO);
         return Response.ok(new CustomResponseDTO("OK")).build();
     }
@@ -54,6 +59,8 @@ public class ShopResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateShop(@PathParam("id") int id, ShopDTO shopDTO) {
+        User user = (User)httpServletRequest.getAttribute("user");
+        //
         shopService.updateShop(id, shopDTO);
         return Response.ok(new CustomResponseDTO("OK")).build();
     }
@@ -63,6 +70,8 @@ public class ShopResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response removeShop(@PathParam("id") int id) {
+        User user = (User)httpServletRequest.getAttribute("user");
+        //
         shopService.deleteShop(id);
         return Response.ok(new CustomResponseDTO("OK")).build();
     }
