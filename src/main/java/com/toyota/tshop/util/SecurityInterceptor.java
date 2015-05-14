@@ -9,6 +9,9 @@ import javax.ws.rs.ext.Provider;
 import com.toyota.tshop.dao.TokenDAO;
 import com.toyota.tshop.dto.CustomResponseDTO;
 import com.toyota.tshop.entity.Token;
+import net.sf.uadetector.ReadableUserAgent;
+import net.sf.uadetector.UserAgentStringParser;
+import net.sf.uadetector.service.UADetectorServiceFactory;
 import org.jboss.resteasy.annotations.interception.ServerInterceptor;
 import org.jboss.resteasy.core.Headers;
 import org.jboss.resteasy.core.ResourceMethod;
@@ -52,7 +55,9 @@ public class SecurityInterceptor implements PreProcessInterceptor {
             MultivaluedMap<String, String> multivaluedMap = httpHeaders.getRequestHeaders();
             List<String> tokens = multivaluedMap.get("token");
             String token = tokens.get(0);
-
+            //
+            UserAgentStringParser parser = UADetectorServiceFactory.getResourceModuleParser();
+            ReadableUserAgent agent = parser.parse(multivaluedMap.get("User-Agent").get(0));
             try {
                 Token tokenObj = tokenDAO.existToken(token);
                 httpRequest.setAttribute("user", tokenObj.getUser());
