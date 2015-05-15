@@ -3,9 +3,6 @@ package com.toyota.tshop.dao;
 import com.toyota.tshop.entity.Token;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Queue;
-
 @Component
 public class TokenDAO extends BaseDAO<Token> {
     public TokenDAO() {

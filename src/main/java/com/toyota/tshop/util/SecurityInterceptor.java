@@ -50,22 +50,15 @@ public class SecurityInterceptor implements PreProcessInterceptor {
     @Override
     public ServerResponse preProcess(HttpRequest httpRequest, ResourceMethod resourceMethod) throws Failure, WebApplicationException {
         Method method = resourceMethod.getMethod();
+        HttpHeaders httpHeaders = httpRequest.getHttpHeaders();
         if (method.isAnnotationPresent(NeedAuth.class)) {
-            final HttpHeaders httpHeaders = httpRequest.getHttpHeaders();
-            MultivaluedMap<String, String> multivaluedMap = httpHeaders.getRequestHeaders();
-            List<String> tokens = multivaluedMap.get("token");
-            String token = tokens.get(0);
-            //
-            UserAgentStringParser parser = UADetectorServiceFactory.getResourceModuleParser();
-            ReadableUserAgent agent = parser.parse(multivaluedMap.get("User-Agent").get(0));
             try {
-                Token tokenObj = tokenDAO.existToken(token);
+                Token tokenObj = tokenDAO.existToken(httpHeaders.getRequestHeaders().get("token").get(0));
                 httpRequest.setAttribute("user", tokenObj.getUser());
                 return null;
             } catch (NoResultException ex) {
                 return ACCESS_DENIED;
             }
-
         } else {
             return null;
         }

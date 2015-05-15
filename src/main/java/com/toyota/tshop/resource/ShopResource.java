@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Component
-@Path("/shops")
+@Path("/shops/")
 public class ShopResource {
     @Context
     private HttpServletRequest httpServletRequest;

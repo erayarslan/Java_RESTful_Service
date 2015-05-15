@@ -18,10 +18,6 @@ public class ShopService {
     @Autowired
     ShopDAO shopDAO;
 
-    public void setShopDAO(ShopDAO shopDAO) {
-        this.shopDAO = shopDAO;
-    }
-
     @Transactional
     public void persistShop(ShopDTO shopDTO) {
         Shop shop = new Shop(shopDTO.getCode(), shopDTO.getName());
