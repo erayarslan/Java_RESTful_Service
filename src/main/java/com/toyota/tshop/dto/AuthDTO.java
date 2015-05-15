@@ -1,5 +1,6 @@
 package com.toyota.tshop.dto;
 
+@SuppressWarnings("unused")
 public class AuthDTO {
     private String username;
     private String password;

@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@SuppressWarnings("unused")
 @Table(name = "T_SHOP", catalog = "omg", uniqueConstraints = {
         @UniqueConstraint(columnNames = "SHOP_CODE")
 })
+@SuppressWarnings("unused")
 public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

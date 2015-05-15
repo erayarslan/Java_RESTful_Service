@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@SuppressWarnings("unused")
 @Table(name = "T_USER", catalog = "omg", uniqueConstraints = {
         @UniqueConstraint(columnNames = "USERNAME")
 })
+@SuppressWarnings("unused")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

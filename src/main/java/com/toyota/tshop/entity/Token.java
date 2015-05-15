@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@SuppressWarnings("unused")
 @Table(name = "T_TOKEN", catalog = "omg", uniqueConstraints = {
         @UniqueConstraint(columnNames = "TOKEN")
 })
+@SuppressWarnings("unused")
 public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,7 +38,7 @@ public class Token {
 
     public Token(String token, User user, String ip_address, String user_agent) {
         Date now = new Date();
-        //
+
         this.token = token;
         this.user = user;
         this.ip_address = ip_address;

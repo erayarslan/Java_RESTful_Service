@@ -7,7 +7,6 @@ import com.toyota.tshop.service.ShopService;
 import com.toyota.tshop.util.NeedAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -54,7 +53,7 @@ public class ShopResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateShop(@PathParam("id") int id, ShopDTO shopDTO) {
         User user = (User)httpServletRequest.getAttribute("user");
-        //
+
         shopService.updateShop(id, shopDTO, user);
         return Response.ok(new CustomResponseDTO("OK")).build();
     }

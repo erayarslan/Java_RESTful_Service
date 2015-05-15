@@ -3,13 +3,10 @@ package com.toyota.tshop.resource;
 import com.toyota.tshop.dto.AuthDTO;
 import com.toyota.tshop.dto.CustomResponseDTO;
 import com.toyota.tshop.dto.RegisterDTO;
-import com.toyota.tshop.entity.Token;
-import com.toyota.tshop.entity.User;
 import com.toyota.tshop.service.MainService;
 import com.toyota.tshop.util.NeedAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;

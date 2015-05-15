@@ -4,6 +4,7 @@ import com.toyota.tshop.entity.User;
 import org.springframework.stereotype.Component;
 
 @Component
+@SuppressWarnings("unchecked")
 public class UserDAO extends BaseDAO<User> {
     public UserDAO() {
         super(User.class);

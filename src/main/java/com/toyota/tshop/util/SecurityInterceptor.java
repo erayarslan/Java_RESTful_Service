@@ -20,13 +20,11 @@ import org.jboss.resteasy.spi.Failure;
 import org.jboss.resteasy.spi.HttpRequest;
 import org.jboss.resteasy.spi.interception.PreProcessInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
-
 import java.lang.reflect.Method;
-import java.util.*;
 
 @Provider
 @ServerInterceptor
+@SuppressWarnings("unused")
 public class SecurityInterceptor implements PreProcessInterceptor {
     @Autowired
     TokenDAO tokenDAO;

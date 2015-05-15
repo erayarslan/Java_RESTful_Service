@@ -7,7 +7,6 @@ import com.toyota.tshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -41,8 +40,8 @@ public class ShopService {
     }
 
     @Transactional
-    public void mergeShop(Shop cse) {
-        shopDAO.merge(cse);
+    public void mergeShop(Shop shop) {
+        shopDAO.merge(shop);
     }
 
     @Transactional(readOnly = true)
@@ -61,7 +60,7 @@ public class ShopService {
     }
 
     @Transactional(readOnly = true)
-    public List<ShopDTO> getOnlines() {
+    public List<ShopDTO> getAllOnline() {
         List<Shop> shops = shopDAO.findShopsOnline();
         List<ShopDTO> shopDTOs = new ArrayList<ShopDTO>();
         for (Shop shop : shops) {
