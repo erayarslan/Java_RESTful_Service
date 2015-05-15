@@ -24,7 +24,7 @@ public class Shop {
     private boolean isOnline;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "UPDATED_BY", nullable = false)
+    @JoinColumn(name = "UPDATED_BY")
     private User updatedBy;
 
     @Column(name = "UPDATED_DATE")

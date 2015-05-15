@@ -3,6 +3,7 @@ package com.toyota.tshop.service;
 import com.toyota.tshop.dao.ShopDAO;
 import com.toyota.tshop.dto.ShopDTO;
 import com.toyota.tshop.entity.Shop;
+import com.toyota.tshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,11 +31,11 @@ public class ShopService {
     }
 
     @Transactional
-    public void updateShop(int id, ShopDTO shopDTO) {
+    public void updateShop(int id, ShopDTO shopDTO, User user) {
         Shop shop = shopDAO.findByID(id);
         shop.setName(shopDTO.getName());
         shop.setCode(shopDTO.getCode());
-        shop.setUpdatedBy(shopDTO.getUpdatedBy());
+        shop.setUpdatedBy(user);
         shop.setUpdatedDate(new Date());
         shopDAO.save(shop);
     }
