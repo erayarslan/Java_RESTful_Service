@@ -3,7 +3,10 @@ package com.toyota.tshop.resource;
 import com.toyota.tshop.dto.AuthDTO;
 import com.toyota.tshop.dto.CustomResponseDTO;
 import com.toyota.tshop.dto.RegisterDTO;
+import com.toyota.tshop.entity.Token;
+import com.toyota.tshop.entity.User;
 import com.toyota.tshop.service.MainService;
+import com.toyota.tshop.util.NeedAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -53,6 +56,21 @@ public class MainResource {
             mainService.doRegister(
                     registerDTO.getUsername(),
                     registerDTO.getPassword()
+            );
+        } catch (Exception ex) {
+            return Response.status(500).entity(new CustomResponseDTO(ex.getMessage())).build();
+        }
+        return Response.ok(new CustomResponseDTO("OK")).build();
+    }
+
+    @POST
+    @Path("logout")
+    @NeedAuth
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response doLogout() {
+        try {
+            mainService.doLogout(
+                    (Token)httpServletRequest.getAttribute("token")
             );
         } catch (Exception ex) {
             return Response.status(500).entity(new CustomResponseDTO(ex.getMessage())).build();

@@ -47,4 +47,14 @@ public class MainService {
             throw ex;
         }
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void doLogout(Token token) throws Exception {
+        try {
+            Token rToken = tokenDAO.findByID(token.getId());
+            tokenDAO.delete(rToken);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }
