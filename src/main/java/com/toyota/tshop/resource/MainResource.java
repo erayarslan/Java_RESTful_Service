@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -70,11 +67,17 @@ public class MainResource {
     public Response doLogout() {
         try {
             mainService.doLogout(
-                    (Token)httpServletRequest.getAttribute("token")
+                    (String)httpServletRequest.getAttribute("token")
             );
         } catch (Exception ex) {
             return Response.status(500).entity(new CustomResponseDTO(ex.getMessage())).build();
         }
         return Response.ok(new CustomResponseDTO("OK")).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response version() {
+        return Response.ok(new CustomResponseDTO("0.0.1")).build();
     }
 }
