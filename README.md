@@ -1,6 +1,6 @@
-# T_SHOP_SECURE_REST
+# Java_RESTful_Service
 
-Cute'n Secure T_SHOP :smile:
+Cute'n Secure Java RESTful Service :smile:
 
 ## about
 
