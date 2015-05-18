@@ -23,7 +23,7 @@ public class ShopResource {
     private ShopService shopService;
 
     @GET
-    @NeedAuth
+    //@NeedAuth
     @Produces(MediaType.APPLICATION_JSON)
     public Response getShops() {
         return Response.ok(shopService.getAll()).build();

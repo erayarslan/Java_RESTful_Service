@@ -23,7 +23,7 @@ public class Shop {
     @Column(name = "IS_SYSTEM_ON", columnDefinition = "INT(1)", nullable = false)
     private boolean isOnline;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "UPDATED_BY")
     private User updatedBy;
 

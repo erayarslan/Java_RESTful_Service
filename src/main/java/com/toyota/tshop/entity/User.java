@@ -1,5 +1,7 @@
 package com.toyota.tshop.entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,10 +29,12 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Token> userTokens = new HashSet<Token>(0);
 
+    @JsonIgnore
     public Set<Token> getUserTokens() {
         return userTokens;
     }
 
+    @JsonIgnore
     public void setUserTokens(Set<Token> userTokens) {
         this.userTokens = userTokens;
     }
@@ -73,10 +77,12 @@ public class User {
         this.password = password;
     }
 
+    @JsonIgnore
     public Set<Shop> getUserShops() {
         return userShops;
     }
 
+    @JsonIgnore
     public void setUserShops(Set<Shop> userShops) {
         this.userShops = userShops;
     }
