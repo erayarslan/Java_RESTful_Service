@@ -1,7 +1,5 @@
 # Java_RESTful_Service
 
-Java RESTful Service :smile:
-
 ## Contributing
 
 1. Fork it!
