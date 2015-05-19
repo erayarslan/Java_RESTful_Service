@@ -2,10 +2,6 @@
 
 Cute'n Secure Java RESTful Service :smile:
 
-## about
-
-;)
-
 ## Contributing
 
 1. Fork it!
