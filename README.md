@@ -1,6 +1,6 @@
 # Java_RESTful_Service
 
-Cute'n Secure Java RESTful Service :smile:
+Java RESTful Service :smile:
 
 ## Contributing
 
