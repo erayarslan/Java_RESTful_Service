@@ -1,4 +1,4 @@
-# Java_RESTful_Service
+# Java RESTful Service
 
 ## Contributing
 
