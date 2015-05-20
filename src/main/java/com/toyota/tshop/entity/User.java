@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "T_USER", catalog = "omg", uniqueConstraints = {
+@Table(name = "T_USER", uniqueConstraints = {
         @UniqueConstraint(columnNames = "USERNAME")
 })
 @SuppressWarnings("unused")

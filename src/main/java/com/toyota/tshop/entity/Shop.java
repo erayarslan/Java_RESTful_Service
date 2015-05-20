@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "T_SHOP", catalog = "omg", uniqueConstraints = {
+@Table(name = "T_SHOP", uniqueConstraints = {
         @UniqueConstraint(columnNames = "SHOP_CODE")
 })
 @SuppressWarnings("unused")

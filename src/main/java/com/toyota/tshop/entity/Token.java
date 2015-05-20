@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "T_TOKEN", catalog = "omg", uniqueConstraints = {
+@Table(name = "T_TOKEN", uniqueConstraints = {
         @UniqueConstraint(columnNames = "TOKEN")
 })
 @SuppressWarnings("unused")
