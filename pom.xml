@@ -102,12 +102,7 @@
         <finalName>T_SHOP</finalName>
         <plugins>
             <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
-            </plugin>
-            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -116,9 +111,8 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
                 <configuration>
-                    <url>http://188.166.68.167:8080/manager/text</url>
+                    <url>http://192.168.1.37:8080/manager/text</url>
                     <server>DigitalOceanServer</server>
                     <path>/${project.build.finalName}</path>
                 </configuration>

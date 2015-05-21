@@ -11,7 +11,7 @@ public class TokenDAO extends BaseDAO<Token> {
     }
 
     public Token existToken(String token) {
-        return (Token)entityManager
+        return (Token) entityManager
                 .createQuery("SELECT tk FROM Token tk Where tk.token = :token")
                 .setParameter("token", token)
                 .getSingleResult();

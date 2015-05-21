@@ -7,6 +7,7 @@ import com.toyota.tshop.service.MainService;
 import com.toyota.tshop.util.NeedAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -64,7 +65,7 @@ public class MainResource {
     public Response doLogout() {
         try {
             mainService.doLogout(
-                    (String)httpServletRequest.getAttribute("token")
+                    (String) httpServletRequest.getAttribute("token")
             );
         } catch (Exception ex) {
             return Response.status(500).entity(new CustomResponseDTO(ex.getMessage())).build();

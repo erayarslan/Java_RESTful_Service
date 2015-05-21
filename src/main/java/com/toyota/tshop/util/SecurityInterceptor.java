@@ -20,6 +20,7 @@ import org.jboss.resteasy.spi.Failure;
 import org.jboss.resteasy.spi.HttpRequest;
 import org.jboss.resteasy.spi.interception.PreProcessInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.lang.reflect.Method;
 
 @Provider

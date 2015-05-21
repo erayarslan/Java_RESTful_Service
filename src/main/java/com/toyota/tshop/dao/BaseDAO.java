@@ -1,12 +1,13 @@
 package com.toyota.tshop.dao;
 
 import org.springframework.stereotype.Component;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Component
-@SuppressWarnings("unused")
+@SuppressWarnings("unused, unchecked")
 public class BaseDAO<T> {
     Class<T> className;
 
